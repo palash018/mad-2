@@ -1,0 +1,88 @@
+openapi: 3.0.0
+info:
+  title: Flashcard API
+  description:Api for flashcard app
+  
+servers:
+  - url: https://jwt2.palashtiwari2.repl.co/
+    description: replit server
+
+paths:
+  /dashboard/<string:token>:
+    POST:
+      summary: adds deck 
+      description: adds deck by taking deck name and description
+      responses:
+        '200':    # status code
+          description: deck added
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+  /decks/<string:token>/<int:i>:
+    POST:
+      summary: adds card 
+      description: adds card using deck id=i
+      responses:
+        '200':    # status code
+          description: card added
+    GET:
+      summary: deletes deck
+      description: adds deck using deck id=i
+      responses:
+        '200':    # status code
+          description: deck deleted
+  /decks/<string:token>
+    GET:
+      summary: returns decks 
+      description: returns list of deck
+      responses:
+        '200':    # status code
+          description: deck returned
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+  /login
+    GET:
+      summary: returns token 
+      description: returns token to authorize user for further usage
+      responses:
+        '200':    # status code
+          description: token given
+          content:
+            application/json:
+              schema: 
+                type: json
+                items: 
+                  type: string
+  /review/<string:token>/<string:d>
+    GET:
+      summary: returns cards 
+      description: returns cards belongs to deck id =d 
+      responses:
+        '200':    # status code
+          description: cards given
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string  
+    POST:
+      summary: updates score and last reviewed
+      description: updates score and last reviewed
+      responses:
+        '200':    # status code
+          description: score updated
+    /signup
+    GET:
+      summary: Used to create new user 
+      description: adds new user to database
+      responses:
+        '200':    # status code
+          description: Signup successful
